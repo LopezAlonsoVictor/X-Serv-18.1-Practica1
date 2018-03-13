@@ -71,11 +71,13 @@ class listweb(webapp.webApp):
         return(request.split()[0],request.split()[1],request)
 
     def __init__(self, hostname, port):
-        aux_file = open('file_urls.csv','w')
-        aux_file.close()
-        aux_file = open('file_urls.csv','r')
-        leerfichero(aux_file)
-        aux_file.close()
+        try:
+            aux_file = open('file_urls.csv','r')
+            leerfichero(aux_file)
+            aux_file.close()
+        except:
+            aux_file = open('file_urls.csv','w')
+            aux_file.close()
         super().__init__(hostname, port)
 
     def process(self, parsedRequest):
