@@ -75,7 +75,7 @@ class listweb(webapp.webApp):
             aux_file = open('file_urls.csv','r')
             leerfichero(aux_file)
             aux_file.close()
-        except:
+        except FileNotFoundError:
             aux_file = open('file_urls.csv','w')
             aux_file.close()
         super().__init__(hostname, port)
